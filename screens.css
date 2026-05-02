@@ -1,0 +1,327 @@
+/* ─────────────────────────────────────────────────
+   Stili specifici per schermata
+───────────────────────────────────────────────── */
+
+/* ── Onboarding ─────────────────────────────── */
+#onboarding-screen {
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.onboard-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 36px;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+
+.onboard-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* ── Home ───────────────────────────────────── */
+#home-screen .banner-card {
+  transition: opacity 0.3s ease;
+}
+
+/* ── Booking ────────────────────────────────── */
+#prenota-screen .service-card {
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+}
+
+#prenota-screen .service-card:active {
+  transform: scale(0.98);
+}
+
+#prenota-screen .service-card.selected {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+#prenota-screen .time-slot {
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+
+#prenota-screen .time-slot.available:hover {
+  border-color: var(--accent);
+}
+
+#prenota-screen .time-slot.selected {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+#prenota-screen .time-slot.busy {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+#prenota-screen .cal-day {
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+}
+
+#prenota-screen .cal-day:hover:not(.cal-day-empty):not(.cal-day-past) {
+  background: var(--surface-3);
+}
+
+#prenota-screen .cal-day.cal-day-selected {
+  background: var(--accent);
+  color: #000;
+  border-radius: var(--r-sm);
+}
+
+#prenota-screen .cal-day.cal-day-past {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+#prenota-screen .zone-btn {
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+
+#prenota-screen .zone-btn.selected {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+/* ── Portfolio / Gallery ────────────────────── */
+#portfolio-screen .portfolio-item {
+  cursor: pointer;
+  break-inside: avoid;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-md);
+}
+
+#portfolio-screen .portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* ── Artisti ────────────────────────────────── */
+.artist-card-row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.artist-card-row:active {
+  background: var(--surface-2);
+}
+
+/* ── Shop ───────────────────────────────────── */
+.product-card {
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.1s;
+}
+
+.product-card:active {
+  transform: scale(0.97);
+}
+
+/* ── Fidelity ───────────────────────────────── */
+.reward-card {
+  transition: border-color 0.2s;
+}
+
+.reward-card.redeemable {
+  border-color: var(--accent-border);
+}
+
+/* ── Chat ───────────────────────────────────── */
+#chat-screen #chat-input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.message-bubble {
+  animation: fadeIn 0.2s ease;
+}
+
+/* ── Storia / Timeline ──────────────────────── */
+.timeline-entry {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.timeline-entry.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Login / Register ───────────────────────── */
+#login-screen,
+#register-screen {
+  background: var(--bg);
+}
+
+#login-screen .form-input:focus,
+#register-screen .form-input:focus {
+  border-color: var(--accent);
+}
+
+/* ── Bottom sheet modal ─────────────────────── */
+.product-detail-sheet {
+  animation: sheetUp 0.3s cubic-bezier(0.32,0.72,0,1);
+}
+
+/* ── Micro-interactions ─────────────────────── */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(0.95); }
+  75% { transform: scale(1.1); }
+}
+
+.like-anim {
+  animation: heartbeat 0.4s ease;
+}
+
+/* ── Step progress (prenotazione) ───────────── */
+.step-progress-bar {
+  height: 3px;
+  background: var(--surface-3);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: none;
+}
+
+.step-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent)cc);
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Skeleton screens ───────────────────────── */
+.skeleton-line {
+  height: 14px;
+  background: var(--surface-2);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  position: relative;
+}
+
+.skeleton-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  animation: shimmer 1.4s ease infinite;
+}
+
+/* ── Artist availability indicator ─────────── */
+.avail-dot-online {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulse-dot 2s ease infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+  50%       { box-shadow: 0 0 0 4px rgba(34,197,94,0); }
+}
+
+/* ── PWA install banner ─────────────────────── */
+#install-banner {
+  position: fixed;
+  bottom: calc(var(--nav-h) + var(--safe-bottom) + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: calc(var(--max-w) - 32px);
+  background: var(--surface);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--r-xl);
+  padding: 14px 16px;
+  z-index: 200;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+  to   { transform: translateX(-50%) translateY(0);    opacity: 1; }
+}
+
+/* ── Dividers ───────────────────────────────── */
+.divider-sm {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+/* ── Section headers ────────────────────────── */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+}
+
+.section-link {
+  font-size: 12px;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+/* ── Scroll row ─────────────────────────────── */
+.scroll-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Backdrop blur fallback ─────────────────── */
+@supports not (backdrop-filter: blur(1px)) {
+  .app-header {
+    background: var(--bg) !important;
+  }
+}
